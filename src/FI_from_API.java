@@ -11,6 +11,7 @@ public class FI_from_API {
         fiAPI.supplier();
         fiAPI.consumer();
         fiAPI.function();
+        fiAPI.unaryBinaryOperator();
     }
 
     public void predicate() {
@@ -77,5 +78,17 @@ public class FI_from_API {
 
         BiFunction<String, String, String> biFn2 = (s1, s2) -> s1.concat(s2);
         System.out.println("BiFunction: " + biFn2.apply("William ", "Shakespeare"));// William Shakespeare
+    }
+
+    public void unaryBinaryOperator() {
+        // UnaryOperator extends Function<T, T> is a functional interface i.e. one abstract method:
+        // T apply(T t)
+        UnaryOperator<String> unaryOperator = name -> "My name is " + name;
+        System.out.println("UnaryOperator: " + unaryOperator.apply("Sean"));//My name is Sean
+
+        //BinaryOperator<T> extends BiFunction<T, T, T> is a functional interface i.e. one abstract method:
+        // T apply(T t1, T t2)
+        BinaryOperator<String> binaryOperator = (s1, s2) -> s1.concat(s2);
+        System.out.println("BinaryOperator: " + binaryOperator.apply("William ", "Shakespeare"));
     }
 }
