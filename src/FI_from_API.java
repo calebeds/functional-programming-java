@@ -10,6 +10,7 @@ public class FI_from_API {
         fiAPI.predicate();
         fiAPI.supplier();
         fiAPI.consumer();
+        fiAPI.function();
     }
 
     public void predicate() {
@@ -61,5 +62,20 @@ public class FI_from_API {
         BiConsumer<String, String> mapPrint = (key, value) -> System.out.println(key + " is the capital of: " + value);
         mapCapitalCities.forEach(mapPrint);
 
+    }
+
+    public void function() {
+        // Function<T, R> is a functional interface i.e. one abstract method:
+        // R apply(T t)
+        Function<String, Integer>  fn2 = s -> s.length();
+        System.out.println("Function: " + fn2.apply("Moscow"));//6
+
+        // BiFunction<T, U, R> is a functional interface i.e. one abstract method:
+        // R apply(T t, U u)
+        BiFunction<String, String, Integer> biFn = (s1, s2) -> s1.length() + s2.length();
+        System.out.println("BiFunction: " + biFn.apply("William", "Shakespeare"));//18
+
+        BiFunction<String, String, String> biFn2 = (s1, s2) -> s1.concat(s2);
+        System.out.println("BiFunction: " + biFn2.apply("William ", "Shakespeare"));// William Shakespeare
     }
 }
